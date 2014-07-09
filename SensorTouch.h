@@ -1,10 +1,10 @@
 /*
-  Library to control the *******
-  More info at *****
+  Library to control the touch sensor MPR121
+  More info at https://www.sparkfun.com/datasheets/Components/MPR121.pdf
 */
 
-#ifndef Touch_h
-#define Touch_h_h
+#ifndef SENSORTOUCH_H
+#define SENSORTOUCH_H
 
 #include "Arduino.h"
 
@@ -59,14 +59,15 @@
 #define TOU_THRESH	0x06
 #define	REL_THRESH	0x0A
 
-class Touch
+class SensorTouch
 {
 	public:
-		Touch(uint8_t irqPin);
+		SensorTouch(int address, uint8_t irqPin);
 		void setup();
 		void readTouchInputs(byte status[]);
 
 	private:
+		int _address;
 		uint8_t _irqPin;
 		boolean checkInterrupt(void);
 		void set_register(int address, unsigned char r, unsigned char v);

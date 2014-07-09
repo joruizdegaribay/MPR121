@@ -1,7 +1,16 @@
-#include <Touch.h>
+/*
+  SimpleRead
+  Read touch sensor and print line pulsed
+ 
+  This example code is in the public domain.
+*/
+ 
+#include <SensorTouch.h>
 #include <Wire.h>
 
-Touch touch (2);
+#define I2C_ADDRESS  0X5A
+
+SensorTouch touch (I2C_ADDRESS, 2);
 
 void setup() {
   Serial.begin(9600);
