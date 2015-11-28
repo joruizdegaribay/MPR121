@@ -5,12 +5,12 @@
   This example code is in the public domain.
 */
  
-#include <SensorTouch.h>
+#include <MPR121.h>
 #include <Wire.h>
 
 #define I2C_ADDRESS  0X5A
 
-SensorTouch touch (I2C_ADDRESS, 2);
+MPR121 touch(I2C_ADDRESS, 2);
 
 void setup() {
   Serial.begin(9600);

@@ -4,10 +4,10 @@
 */
 
 #include "Arduino.h"
-#include "SensorTouch.h"
+#include "MPR121.h"
 #include <Wire.h>
 
-SensorTouch::SensorTouch(int address, uint8_t irqPin){
+MPR121::MPR121(int address, uint8_t irqPin){
 
 	_address = address;
 	_irqPin = irqPin;
@@ -15,7 +15,7 @@ SensorTouch::SensorTouch(int address, uint8_t irqPin){
 	Wire.begin();
 }               
 
-void SensorTouch::setup(){
+void MPR121::setup(){
 
 	set_register(_address, ELE_CFG, 0x00); 
 
@@ -87,7 +87,7 @@ void SensorTouch::setup(){
  
 } 
 
-void SensorTouch::readTouchInputs(byte status[]){
+void MPR121::readTouchInputs(byte status[]){
   
 	if(!checkInterrupt()){
 		Wire.requestFrom(_address,2); //Wire.requestFrom(address,quantity in bytes)//Address from the datasheet
@@ -106,11 +106,11 @@ void SensorTouch::readTouchInputs(byte status[]){
 	}
 }
 
- boolean SensorTouch::checkInterrupt(void){
+ boolean MPR121::checkInterrupt(void){
 	return digitalRead(_irqPin);
 }
 
- void SensorTouch::set_register(int address, unsigned char r, unsigned char v){
+ void MPR121::set_register(int address, unsigned char r, unsigned char v){
  
 	Wire.beginTransmission(address);
 	Wire.write(r);

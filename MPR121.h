@@ -3,8 +3,8 @@
   More info at https://www.sparkfun.com/datasheets/Components/MPR121.pdf
 */
 
-#ifndef SENSORTOUCH_H
-#define SENSORTOUCH_H
+#ifndef MPR121_H
+#define MPR121_H
 
 #include "Arduino.h"
 
@@ -59,10 +59,10 @@
 #define TOU_THRESH	0x06
 #define	REL_THRESH	0x0A
 
-class SensorTouch
+class MPR121
 {
 	public:
-		SensorTouch(int address, uint8_t irqPin);
+		MPR121(int address, uint8_t irqPin);
 		void setup();
 		void readTouchInputs(byte status[]);
 
